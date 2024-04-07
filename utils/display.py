@@ -33,6 +33,15 @@ def show_fps(img, fps):
     cv2.putText(img, fps_text, (10, 20), font, 1.0, (240, 240, 240), 1, line)
     return img
 
+def show_total(img, total):
+    """Draw total number of objects at top-right corner of the image."""
+    font = cv2.FONT_HERSHEY_PLAIN
+    line = cv2.LINE_AA
+    total_text = 'Total: {}'.format(total)
+    cv2.putText(img, total_text, (11, 40), font, 1.0, (32, 32, 32), 4, line)
+    cv2.putText(img, total_text, (10, 40), font, 1.0, (240, 240, 240), 1, line)
+    return img
+
 
 def set_display(window_name, full_scrn):
     """Set disply window to either full screen or normal."""
