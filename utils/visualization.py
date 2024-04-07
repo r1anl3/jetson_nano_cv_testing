@@ -90,6 +90,7 @@ class BBoxVisualization():
 
     def draw_bboxes(self, img, boxes, confs, clss):
         """Draw detected bounding boxes on the original image."""
+        print(f"boxes: {boxes}, confs: {confs}, clss: {clss}")
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
             x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
