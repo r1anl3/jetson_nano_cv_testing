@@ -90,15 +90,14 @@ class BBoxVisualization():
 
     def draw_bboxes(self, img, boxes, confs, clss):
         """Draw detected bounding boxes on the original image."""
-        # print(f"boxes: {boxes}, confs: {confs}, clss: {clss}")
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
-            print(f"cl: {cl}")
             x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
             color = self.colors[cl]
             cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
             txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
             txt = '{} {:.2f}'.format(cls_name, cf)
+            print(f"class: {cls_name}, confidence: {cf}")
             img = draw_boxed_text(img, txt, txt_loc, color)
         return img
