@@ -97,7 +97,7 @@ class BBoxVisualization():
             cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
             txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
-            print(cls_name, cls_name == 'person')
             txt = '{} {:.2f}'.format(cls_name, cf)
-            img = draw_boxed_text(img, txt, txt_loc, color)
+            if (cls_name == 'person'):
+              img = draw_boxed_text(img, txt, txt_loc, color)
         return img
