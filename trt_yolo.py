@@ -84,6 +84,7 @@ def loop_and_detect(cam, trt_yolo, conf_th, vis):
 
 
 def main():
+    print('run main')
     args = parse_args()
     if args.category_num <= 0:
         raise SystemExit('ERROR: bad category_num (%d)!' % args.category_num)
