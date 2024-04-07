@@ -14,7 +14,7 @@ import pycuda.autoinit  # This is needed for initializing CUDA driver
 
 from utils.yolo_classes import get_cls_dict
 from utils.camera import add_camera_args, Camera
-from utils.display import open_window, set_display, show_fps
+from utils.display import open_window, set_display, show_fps, show_total
 from utils.visualization import BBoxVisualization
 from utils.yolo_with_plugins import TrtYOLO
 
@@ -69,6 +69,7 @@ def loop_and_detect(cam, trt_yolo, conf_th, vis):
         boxes, confs, clss = trt_yolo.detect(img, conf_th)
         img = vis.draw_bboxes(img, boxes, confs, clss)
         img = show_fps(img, fps)
+        img = show_total(img, len(boxes))
         cv2.imshow(WINDOW_NAME, img)
         toc = time.time()
         curr_fps = 1.0 / (toc - tic)
