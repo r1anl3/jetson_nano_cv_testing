@@ -99,5 +99,6 @@ class BBoxVisualization():
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
             txt = '{} {:.2f}'.format(cls_name, cf)
             print(f"class: {cls_name}, confidence: {cf}")
-            img = draw_boxed_text(img, txt, txt_loc, color)
+            if (cls_name == 'person'):
+              img = draw_boxed_text(img, txt, txt_loc, color)
         return img
