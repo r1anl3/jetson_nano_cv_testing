@@ -87,6 +87,7 @@ class BBoxVisualization():
     def __init__(self, cls_dict):
         self.cls_dict = cls_dict
         self.colors = gen_colors(len(cls_dict))
+        self.box_count = 0
 
     def draw_bboxes(self, img, boxes, confs, clss):
         """Draw detected bounding boxes on the original image."""
@@ -116,9 +117,13 @@ class BBoxVisualization():
         img = draw_boxed_text(img, txt, txt_loc, color)
     
     def count_people(self, img, boxes, confs, clss):
+        """Count the number of people detected in the image."""
+        self.box_count = len(boxes)
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
-            if (cls_name == 'person'):
+            if (cls_name != 'person'):
+              self.box_count -= 1
+            else:
               self.draw_bbox_v2(img, bb, cf, cl)
         return img
