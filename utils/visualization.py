@@ -104,7 +104,6 @@ class BBoxVisualization():
     def draw_bbox_v2(self, img, bb, cf, cl):
         """Draw detected bounding boxes on the original image."""
         cl = int(cl)
-        print(len(bb))
         x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
         color = self.colors[cl]
         txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
@@ -117,7 +116,6 @@ class BBoxVisualization():
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
-            print(f"cls_name: {cls_name}, cf: {cf}")
             if (cls_name == 'person'):
               self.draw_bbox_v2(img, bb, cf, cl)
         return img
