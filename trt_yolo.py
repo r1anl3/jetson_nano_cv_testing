@@ -69,7 +69,7 @@ def loop_and_detect(cam, trt_yolo, conf_th, vis):
         boxes, confs, clss = trt_yolo.detect(img, conf_th)
         img = vis.draw_bboxes(img, boxes, confs, clss)
         img = show_fps(img, fps)
-        img = show_total(img, vis.count_people(clss))
+        img = show_total(img, vis.count_people(confs, clss))
         cv2.imshow(WINDOW_NAME, img)
         toc = time.time()
         curr_fps = 1.0 / (toc - tic)
