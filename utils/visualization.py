@@ -104,6 +104,7 @@ class BBoxVisualization():
     def draw_bbox_v2(self, img, bb, cf, cl):
         """Draw detected bounding boxes on the original image."""
         cl = int(cl)
+        print(len(bb))
         x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
         color = self.colors[cl]
         txt_loc = (max(x_min+2, 0), max(y_min+2, 0))

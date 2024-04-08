@@ -67,7 +67,7 @@ def loop_and_detect(cam, trt_yolo, conf_th, vis):
         if img is None:
             break
         boxes, confs, clss = trt_yolo.detect(img, conf_th)
-        img = vis.draw_bboxes(img, boxes, confs, clss)
+        img = vis.count_people(img, boxes, confs, clss)
         img = show_fps(img, fps)
         img = show_total(img, len(boxes))
         cv2.imshow(WINDOW_NAME, img)
