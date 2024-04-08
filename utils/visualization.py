@@ -120,5 +120,5 @@ class BBoxVisualization():
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
             print(f"cls_name: {cls_name}, cf: {cf}")
             if (cls_name == 'person'):
-              draw_bbox_v2(img, bb, cf, cl)
+              self.draw_bbox_v2(img, bb, cf, cl)
         return
