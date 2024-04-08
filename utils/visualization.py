@@ -96,9 +96,12 @@ class BBoxVisualization():
             color = self.colors[cl]
             txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
+            print(f"cls_name: {cls_name} cf: {cf}")
             txt = '{} {:.2f}'.format(cls_name, cf)
             cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
             img = draw_boxed_text(img, txt, txt_loc, color)
+        print(f"number of boxes: {len(boxes)}")
+        print("=====================================")
         return img
 
     def draw_bbox_v2(self, img, bb, cf, cl):
