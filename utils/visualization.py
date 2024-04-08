@@ -100,4 +100,4 @@ class BBoxVisualization():
             if (cls_name == 'person'):
               cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
               img = draw_boxed_text(img, txt, txt_loc, color)
-        return img
+        return 
