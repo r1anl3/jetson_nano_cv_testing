@@ -112,9 +112,8 @@ class BBoxVisualization():
         txt = '{} {:.2f}'.format(cls_name, cf)
         cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
         img = draw_boxed_text(img, txt, txt_loc, color)
-        return img
     
-    def count_people(self, img, boxes,confs, clss):
+    def count_people(self, img, boxes, confs, clss):
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
