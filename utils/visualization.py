@@ -122,6 +122,7 @@ class BBoxVisualization():
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
+            print(f"cls_name: {cls_name} cf: {cf}")
             if (cls_name != 'person'):
               self.box_count -= 1
             else:
