@@ -93,6 +93,7 @@ class BBoxVisualization():
         """Draw detected bounding boxes on the original image."""
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
+            print(cl)
             x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
             color = self.colors[cl]
             txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
