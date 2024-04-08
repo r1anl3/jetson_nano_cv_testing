@@ -127,6 +127,6 @@ class BBoxVisualization():
               self.box_count -= 1
             else:
               self.draw_bbox_v2(img, bb, cf, cl)
-        print(f"number of boxes: {len(boxes)}")
+        print(f"number of boxes: {self.box_count}")
         print("=====================================")
         return img
