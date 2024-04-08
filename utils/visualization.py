@@ -101,12 +101,24 @@ class BBoxVisualization():
             cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
             img = draw_boxed_text(img, txt, txt_loc, color)
         return img
+
+    def draw_bbox_v2(self, img, bb, cf, cl):
+        """Draw detected bounding boxes on the original image."""
+        cl = int(cl)
+        x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
+        color = self.colors[cl]
+        txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
+        cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
+        txt = '{} {:.2f}'.format(cls_name, cf)
+        cv2.rectangle(img, (x_min, y_min), (x_max, y_max), color, 2)
+        img = draw_boxed_text(img, txt, txt_loc, color)
+        return img
     
-    def count_people(self, confs, clss):
-        for cf ,cl in zip(confs, clss):
+    def count_people(self, img, boxes,confs, clss):
+        for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
             print(f"cls_name: {cls_name}, cf: {cf}")
             if (cls_name == 'person'):
-              self.count += 1
-        return self.count
+              draw_bbox_v2(img, bb, cf, cl)
+        return
