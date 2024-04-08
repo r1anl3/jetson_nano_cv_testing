@@ -87,14 +87,13 @@ class BBoxVisualization():
     def __init__(self, cls_dict):
         self.cls_dict = cls_dict
         self.colors = gen_colors(len(cls_dict))
-        self.count = 0
 
     def draw_bboxes(self, img, boxes, confs, clss):
         """Draw detected bounding boxes on the original image."""
         for bb, cf, cl in zip(boxes, confs, clss):
             cl = int(cl)
-            print(cl)
             x_min, y_min, x_max, y_max = bb[0], bb[1], bb[2], bb[3]
+            print(f"numbers of color: {len(self.colors)}")
             color = self.colors[cl]
             txt_loc = (max(x_min+2, 0), max(y_min+2, 0))
             cls_name = self.cls_dict.get(cl, 'CLS{}'.format(cl))
